@@ -1,0 +1,49 @@
+//example for Liskov substitution principle in solid principles
+
+using System;
+namespace ConsoleApplication1
+{
+class Program {
+static void Main(string[] args)
+{
+string inputfile ="txt";
+ReadLog obj1=null;
+
+if(string.compare(inputfile,"txt",true)==0)
+{
+obj1 = new ReadLog();
+}
+if(string.compare(inputfile,"xml",true)==0)
+{
+obj1 = new ReadLogXml();
+}
+if(string.compare(inputfile,"flat",true)==0)
+{
+obj1 = new ReadLogFlat();
+}
+Console.WriteLine(obj1.ReadLogFIle());
+Console.ReadLine();
+}
+}
+public class ReadLog
+{
+public virtual string ReadLogFile()
+{
+return "Reading from text file";
+}
+}
+public class ReadLogXml : ReadLog
+{
+public override string ReadLogFile()
+{
+return "Reading from xml file";
+}
+}
+public class ReadLogFlat : ReadLog
+{
+public override string ReadLogFile()
+{
+return "Reading from flat file";
+}
+}
+}
