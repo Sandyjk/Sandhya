@@ -1,0 +1,44 @@
+//Singlecast Delegate
+
+using System;    
+namespace ConsoleApplication1    
+{    
+
+public delegate void delmethod();    
+  
+public class Example    
+{  
+  
+public static void display()    
+{    
+Console.WriteLine("Hello!");    
+}    
+  
+public static void show()    
+{    
+Console.WriteLine("Hi!");    
+}    
+  
+public void print()
+{
+Console.WriteLine("World");
+}
+} 
+class Program 
+{ 
+static void Main(string[] args)
+{
+delmethod del1 =Example.show;
+  
+
+delmethod del2 = new delmethod(Example.display);
+Example obj = new Example();  
+delmethod del3 = obj.print;
+  
+del1();
+del2();
+del3();
+Console.ReadLine();
+}
+}
+}

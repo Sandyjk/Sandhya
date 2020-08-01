@@ -1,0 +1,42 @@
+//MultiCast Delegate
+
+using System;  
+namespace ConsoleApplication2
+{  
+public delegate void delmethod(int x, int y);  
+  
+public class MultiCastDelegate  
+{  
+public void Add(int x, int y)  
+{  
+Console.Write("Addition Operation");  
+Console.WriteLine(x + y);  
+}  
+  
+public void Sub(int x, int y)  
+{  
+Console.Write("Subtraction Operation");  
+Console.WriteLine(x - y);  
+}  
+}  
+class Program  
+{  
+static void Main(string[] args)  
+{  
+  
+MultiCastDelegate  obj = new MultiCastDelegate ();  
+delmethod del = new delmethod(obj.Add);  
+  
+
+del += new delmethod(obj.Sub);  
+
+del(50, 10);  
+Console.WriteLine();  
+
+del -= new delmethod(obj.Add);  
+
+del(20, 10);  
+Console.ReadLine();  
+}  
+}  
+}  
