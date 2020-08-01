@@ -1,0 +1,65 @@
+using System;
+namespace ConsoleApplication3
+{
+public abstract class Account
+{
+ public decimal Balance;
+ public abstract decimal CalcInterest();
+}
+ 
+
+public class RegularSavingAccount : Account
+{
+
+ public override decimal CalcInterest()
+ {
+ decimal Interest = (Balance * 4) / 100;
+ if (Balance <= 1000) Interest -= (Balance * 2) / 100;
+ if (Balance > 1000 && Balance <= 50000) Interest += (Balance * 4) / 100;
+ 
+ return Interest;
+ }
+}
+ 
+public class SalarySavingAccount : Account
+{
+
+ public override decimal CalcInterest()
+ {
+ decimal Interest = (Balance * 5) / 100;
+ return Interest;
+ }
+}
+
+public class CorporateAccount : Account
+{
+ 
+ public override decimal CalcInterest()
+ {
+ decimal Interest = (Balance * 3) / 100;
+ return Interest;
+ }
+}
+class Program
+{
+static void Main(string[] args)
+{
+RegularSavingAccount rsa = new RegularSavingAccount();
+rsa.Balance=1000;
+decimal interest = rsa.CalcInterest();
+Console.WriteLine(" ",interest);
+
+SalarySavingAccount ssa = new SalarySavingAccount();
+ssa.Balance=500;
+decimal interest = ssa.CalcInterest();
+Console.WriteLine(" ",interest);
+
+
+CorporateAccount ca = new CorporateAccount();
+ca.Balance=5000;
+decimal interest = ca.CalcInterest();
+Console.WriteLine(" ",interest);
+}
+}
+}
+
