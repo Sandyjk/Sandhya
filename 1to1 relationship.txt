@@ -23,13 +23,19 @@ public Blog Blog{get; set;}
 }
 
 Step 3:
-
+namespace Blog.Data
+{
 public class MyContext : Dbcontext
 {
+protected override void OnConfiguring(DbcontextOptionBuilder optionsBuilder)
+{
+optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Blog.Data");
+}
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
 modelBuilder.Entity<Blog>().HasOne(b => b.BlogImage).WithOne(i => i.Blog).HasForeignKey<BlogImage>(b => b.BlogForeignKey);
 }
 public DbSet<Blog>  Blogs{get; set;}
 public DbSet<BlogImage> BlogImages{get; set;}
+}
 }
