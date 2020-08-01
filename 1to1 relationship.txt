@@ -18,7 +18,7 @@ public int BlogImageId { get; set; }
 public byte[] Image { get; set; } 
 public string Caption { get; set; }
 
-public int BlogForeignKey{ get; set; }
+public int BlogId{ get; set; }
 public Blog Blog{get; set;}
 }
 
@@ -31,10 +31,7 @@ protected override void OnConfiguring(DbcontextOptionBuilder optionsBuilder)
 {
 optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Blog.Data");
 }
-protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-modelBuilder.Entity<Blog>().HasOne(b => b.BlogImage).WithOne(i => i.Blog).HasForeignKey<BlogImage>(b => b.BlogForeignKey);
-}
+
 public DbSet<Blog>  Blogs{get; set;}
 public DbSet<BlogImage> BlogImages{get; set;}
 }
