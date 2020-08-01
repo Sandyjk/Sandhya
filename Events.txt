@@ -1,0 +1,36 @@
+//Delegates and events
+
+using System;  
+namespace ConsoleApllication3
+{  
+public delegate void MyDelegate(int a);  
+  
+public class Events
+{  
+public event MyDelegate MyEvent;  
+  
+public void RaiseEvent()  
+{  
+MyEvent(20);  
+Console.WriteLine("Event Raised");  
+}  
+  
+public void Display(int x)  
+{  
+Console.WriteLine("Display Method {0}", x);  
+}  
+}  
+
+class Program  
+{  
+static void Main(string[] args)  
+{  
+  
+Events obj = new Events();  
+obj.MyEvent += new MyDelegate(obj.Display);  
+  
+obj.RaiseEvent();  
+Console.ReadLine();  
+}  
+}  
+}  
