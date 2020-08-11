@@ -44,18 +44,17 @@ class Program
 {
 static void Main(string[] args)
 {
-RegularSavingAccount rsa = new RegularSavingAccount();
+Account rsa = new RegularSavingAccount();
 rsa.Balance=1000;
 decimal interest = rsa.CalcInterest();
 Console.WriteLine(" ",interest);
 
-SalarySavingAccount ssa = new SalarySavingAccount();
+Account ssa = new SalarySavingAccount();
 ssa.Balance=500;
 decimal interest = ssa.CalcInterest();
 Console.WriteLine(" ",interest);
 
-
-CorporateAccount ca = new CorporateAccount();
+Account ca = new CorporateAccount();
 ca.Balance=5000;
 decimal interest = ca.CalcInterest();
 Console.WriteLine(" ",interest);
